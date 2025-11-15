@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Screen Image Viewer</title>
+    <title>Full-Screen Image Viewer</title>
     <style>
-        body { 
-            margin: 0; 
-            overflow: hidden; 
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black; /* Optional, for a cleaner look */
         }
-        img { 
-            width: 100vw; 
-            height: 100vh; 
-            object-fit: cover; 
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -20,11 +21,14 @@
     <img src="./img.png" alt="Full Screen Image" id="fullScreenImage">
 
     <script>
-        // Function to open the image in full screen
+        // Function to open the image in full screen without UI
         function openFullScreen() {
             const img = document.getElementById('fullScreenImage');
+
             if (img.requestFullscreen) {
-                img.requestFullscreen();
+                img.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                });
             } else if (img.mozRequestFullScreen) { // Firefox
                 img.mozRequestFullScreen();
             } else if (img.webkitRequestFullscreen) { // Chrome, Safari and Opera
@@ -34,16 +38,12 @@
             }
         }
 
-        // Hide cursor and disable mouse and keyboard input
+        // Disable mouse and keyboard inputs
         document.addEventListener('keydown', function(event) {
             event.preventDefault();
         });
 
         document.addEventListener('mousedown', function(event) {
-            event.preventDefault();
-        });
-
-        document.addEventListener('mousemove', function(event) {
             event.preventDefault();
         });
 
