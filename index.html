@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Screen Image Viewer</title>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
+        body { 
+            margin: 0; 
+            overflow: hidden; 
         }
-        img {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+        img { 
+            width: 100vw; 
+            height: 100vh; 
+            object-fit: cover; 
         }
     </style>
 </head>
 <body>
-    <img src="path/to/your/image.jpg" alt="Full Screen Image" id="fullScreenImage">
+    <img src="./img.png" alt="Full Screen Image" id="fullScreenImage">
 
     <script>
         // Function to open the image in full screen
@@ -33,7 +33,7 @@
                 img.msRequestFullscreen();
             }
         }
-        
+
         // Hide cursor and disable mouse and keyboard input
         document.addEventListener('keydown', function(event) {
             event.preventDefault();
